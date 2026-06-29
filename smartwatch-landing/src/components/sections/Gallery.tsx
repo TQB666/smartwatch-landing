@@ -1,6 +1,6 @@
-import watch from "../../assets/images/watch.png";
+import { S3_IMAGES } from "../../config/s3";
 
-const images = [watch, watch, watch, watch];
+const images = S3_IMAGES.gallery;
 
 const Gallery = () => {
     return (
@@ -45,6 +45,7 @@ const Gallery = () => {
                             duration-500
                             hover:scale-110
                             "
+                            loading="lazy"
                         />
 
                     </div>

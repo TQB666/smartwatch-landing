@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import watch from "../../assets/images/watch.png";
+import { S3_IMAGES } from "../../config/s3";
 
 const Hero = () => {
   return (
@@ -59,11 +59,12 @@ const Hero = () => {
         {/* Right */}
         <div className="flex justify-center">
           <motion.img
-            src={watch}
+            src={S3_IMAGES.hero}
             alt="NovaWatch"
             className="w-[420px]"
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
+            loading="eager"
           />
         </div>
 
