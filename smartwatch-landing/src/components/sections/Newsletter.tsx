@@ -31,7 +31,7 @@ const Newsletter = () => {
         <section id="newsletter" className="mx-auto max-w-3xl px-6 py-28">
             <div className="text-center">
                 <h2 className="text-5xl font-bold">Stay Updated</h2>
-                <p className="mt-4 text-gray-400">Subscribe to receive product news.</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">Subscribe to receive product news.</p>
             </div>
 
             <form className="mt-12 space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -39,7 +39,7 @@ const Newsletter = () => {
                     <input
                         {...register("name")}
                         placeholder="Your name"
-                        className="w-full rounded-xl border border-white/10 bg-white/5 p-4 text-white"
+                        className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-4 text-gray-900 dark:text-white"
                     />
                     {errors.name && <p className="mt-1 text-red-500">{errors.name.message}</p>}
                 </div>
@@ -48,7 +48,7 @@ const Newsletter = () => {
                     <input
                         {...register("email")}
                         placeholder="Email"
-                        className="w-full rounded-xl border border-white/10 bg-white/5 p-4 text-white"
+                        className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-4 text-gray-900 dark:text-white"
                     />
                     {errors.email && <p className="mt-1 text-red-500">{errors.email.message}</p>}
                 </div>

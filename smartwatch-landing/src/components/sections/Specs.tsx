@@ -39,8 +39,8 @@ const Specs = () => {
                 overflow-hidden
                 rounded-3xl
                 border
-                border-white/10
-                bg-white/5
+                border-black/10 dark:border-white/10
+                bg-black/5 dark:bg-white/5
                 "
             >
 
@@ -52,7 +52,7 @@ const Specs = () => {
                         flex
                         justify-between
                         border-b
-                        border-white/10
+                        border-black/10 dark:border-white/10
                         px-8
                         py-6
                         "
@@ -72,7 +72,7 @@ const Specs = () => {
                         }}
                     >
 
-                        <span className="text-gray-400">
+                        <span className="text-gray-600 dark:text-gray-400">
 
                             {label}
 
