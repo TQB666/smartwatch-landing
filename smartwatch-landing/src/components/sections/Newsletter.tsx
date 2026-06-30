@@ -1,98 +1,68 @@
-import { useState } from "react";
 import { subscribeNewsletter } from "../../services/newsletter";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { newsletterSchema } from "../../validations/newsletter.schema";
+import type { NewsletterForm } from "../../validations/newsletter.schema";
+
 const Newsletter = () => {
-    const [name,setName]=useState("");
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<NewsletterForm>({
+        resolver: zodResolver(newsletterSchema),
+    });
 
-    const [email,setEmail]=useState("");
-
-    const handleSubmit = async (e:React.FormEvent)=>{
-        e.preventDefault();
-        try{
-            await subscribeNewsletter(
-            name,
-            email
-            );
+    const onSubmit = async (data: NewsletterForm) => {
+        try {
+            await subscribeNewsletter(data.name, data.email);
             toast.success("Subscribed Successfully");
-            setName("");
-            setEmail("");
-        }catch{
-            toast.error("Please try again");
+            reset();
+        } catch (error: any) {
+            toast.error(error.message || "Please try again");
         }
     }
+
     return (
-
-        <section
-            id="newsletter"
-            className="mx-auto max-w-3xl px-6 py-28"
-        >
-
+        <section id="newsletter" className="mx-auto max-w-3xl px-6 py-28">
             <div className="text-center">
-
-                <h2 className="text-5xl font-bold">
-
-                    Stay Updated
-
-                </h2>
-
-                <p className="mt-4 text-gray-400">
-
-                    Subscribe to receive product news.
-
-                </p>
-
+                <h2 className="text-5xl font-bold">Stay Updated</h2>
+                <p className="mt-4 text-gray-400">Subscribe to receive product news.</p>
             </div>
 
-            <form className="mt-12 space-y-6" onSubmit={handleSubmit}>
-
-                <input
-                    placeholder="Your name"
-                    className="
-                    w-full
-                    rounded-xl
-                    border
-                    border-white/10
-                    bg-white/5
-                    p-4
-                    "
-                    value={name}
-                    onChange={(e)=>setName(e.target.value)}
-                />
-
-                <input
-                    placeholder="Email"
-                    className="
-                    w-full
-                    rounded-xl
-                    border
-                    border-white/10
-                    bg-white/5
-                    p-4
-                    "
-                    value={email}
-                    onChange={(e)=>setEmail(e.target.value)}
-                />
+            <form className="mt-12 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                <div>
+                    <input
+                        {...register("name")}
+                        placeholder="Your name"
+                        className="w-full rounded-xl border border-white/10 bg-white/5 p-4 text-white"
+                    />
+                    {errors.name && <p className="mt-1 text-red-500">{errors.name.message}</p>}
+                </div>
+                
+                <div>
+                    <input
+                        {...register("email")}
+                        placeholder="Email"
+                        className="w-full rounded-xl border border-white/10 bg-white/5 p-4 text-white"
+                    />
+                    {errors.email && <p className="mt-1 text-red-500">{errors.email.message}</p>}
+                </div>
 
                 <button
-                    className="
-                    w-full
-                    rounded-xl
-                    bg-cyan-500
-                    p-4
-                    font-semibold
-                    "
+                    className="w-full rounded-xl bg-cyan-500 p-4 font-semibold text-black disabled:opacity-50"
+                    type="submit"
+                    disabled={isSubmitting}
                 >
-
-                    Subscribe
-
+                    {isSubmitting ? "Submitting..." : "Subscribe"}
                 </button>
-
             </form>
-
         </section>
-
     );
-
 };
 
 export default Newsletter;
