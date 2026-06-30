@@ -42,8 +42,14 @@ const Shop = () => {
                                 />
                             </button>
 
-                            <div className="flex justify-center py-8">
-                                <img src={product.image} alt={product.name} className="h-48 object-contain hover:scale-105 transition-transform duration-300" />
+                            <div className="flex justify-center py-4">
+                                <div className="w-full bg-white dark:bg-white/95 rounded-3xl p-6 flex justify-center shadow-inner">
+                                    <img 
+                                        src={product.image} 
+                                        alt={product.name} 
+                                        className="h-48 object-contain mix-blend-multiply hover:scale-110 transition-transform duration-300" 
+                                    />
+                                </div>
                             </div>
 
                             <div className="mt-auto">

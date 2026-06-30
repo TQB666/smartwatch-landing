@@ -90,16 +90,21 @@ const Hero = () => {
         {/* Right: Image with Parallax & Floating */}
         <motion.div 
           style={{ y: imageY }}
-          className="flex justify-center"
+          className="flex justify-center relative"
         >
-          <motion.img
-            src={S3_IMAGES.hero}
-            alt="NovaWatch"
-            className="w-[420px]"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            loading="eager"
-          />
+          {/* Subtle glow behind the card in dark mode */}
+          <div className="absolute inset-0 bg-cyan-500/20 blur-[80px] rounded-full hidden dark:block" />
+          
+          <div className="relative overflow-hidden rounded-[3rem] bg-white p-8 shadow-2xl dark:shadow-cyan-500/10">
+            <motion.img
+              src={S3_IMAGES.hero}
+              alt="NovaWatch"
+              className="w-[360px] object-contain mix-blend-multiply"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              loading="eager"
+            />
+          </div>
         </motion.div>
 
       </div>
