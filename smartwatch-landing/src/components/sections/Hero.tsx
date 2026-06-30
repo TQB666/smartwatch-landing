@@ -24,7 +24,7 @@ const Hero = () => {
             NovaWatch X
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg text-gray-400">
+          <p className="mt-6 max-w-lg text-lg text-gray-600 dark:text-gray-400">
             Experience the next generation wearable device powered by artificial intelligence.
           </p>
 
@@ -33,7 +33,7 @@ const Hero = () => {
               Buy Now
             </button>
 
-            <button className="rounded-xl border border-white/20 px-8 py-4 hover:bg-white/10 transition">
+            <button className="rounded-xl border border-black/20 dark:border-white/20 px-8 py-4 hover:bg-black/10 dark:bg-white/10 transition">
               Learn More
             </button>
           </div>

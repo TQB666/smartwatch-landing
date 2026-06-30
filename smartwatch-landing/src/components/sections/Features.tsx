@@ -52,7 +52,7 @@ const Features = () => {
                     Powerful Features
                 </h2>
 
-                <p className="mx-auto mt-6 max-w-2xl text-gray-400">
+                <p className="mx-auto mt-6 max-w-2xl text-gray-600 dark:text-gray-400">
 
                     Discover the future of wearable technology.
 
@@ -92,14 +92,14 @@ const Features = () => {
                             className="
                             rounded-3xl
                             border
-                            border-white/10
-                            bg-white/5
+                            border-black/10 dark:border-white/10
+                            bg-black/5 dark:bg-white/5
                             p-8
                             transition
                             duration-300
                             hover:-translate-y-3
                             hover:border-cyan-400
-                            hover:bg-white/10
+                            hover:bg-black/10 dark:bg-white/10
                             "
                         >
 
@@ -114,7 +114,7 @@ const Features = () => {
 
                             </h3>
 
-                            <p className="mt-4 text-gray-400">
+                            <p className="mt-4 text-gray-600 dark:text-gray-400">
 
                                 {feature.description}
 

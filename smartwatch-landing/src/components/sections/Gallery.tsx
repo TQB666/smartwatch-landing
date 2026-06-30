@@ -32,7 +32,7 @@ const Gallery = () => {
                         className="
                         overflow-hidden
                         rounded-3xl
-                        bg-white/5
+                        bg-black/5 dark:bg-white/5
                         "
                     >
 

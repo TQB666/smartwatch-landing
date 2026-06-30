@@ -1,15 +1,19 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:"Inter",sans-serif;
-    background:#09090B;
-    color:white;
+body {
+    font-family: "Inter", sans-serif;
+    @apply bg-white text-gray-900 transition-colors duration-300;
 }
 
-*{
-    box-sizing:border-box;
+.dark body {
+    @apply bg-[#09090B] text-white;
+}
+
+* {
+    box-sizing: border-box;
 }
