@@ -29,9 +29,9 @@ const Hero = () => {
           </p>
 
           <div className="mt-10 flex gap-4">
-            <button className="rounded-xl bg-cyan-500 px-8 py-4 font-semibold hover:scale-105 transition">
+            <a href="#shop" className="rounded-xl bg-cyan-500 px-8 py-4 font-semibold text-black hover:scale-105 transition">
               Buy Now
-            </button>
+            </a>
 
             <button className="rounded-xl border border-black/20 dark:border-white/20 px-8 py-4 hover:bg-black/10 dark:bg-white/10 transition">
               Learn More
