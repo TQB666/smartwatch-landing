@@ -1,7 +1,10 @@
 import {
     collection,
     addDoc,
-    serverTimestamp
+    serverTimestamp,
+    query,
+    where,
+    getDocs
 } from "firebase/firestore";
 
 import { db } from "../config/firebase";
@@ -12,6 +15,16 @@ export const subscribeNewsletter = async (
     email:string
 
 )=>{
+    const q = query(
+        collection(db, "newsletter"),
+        where("email", "==", email)
+    );
+
+    const snapshot = await getDocs(q);
+
+    if (!snapshot.empty) {
+        throw new Error("Email already exists");
+    }
 
     await addDoc(
 
