@@ -1,5 +1,25 @@
+import { useState } from "react";
+import { subscribeNewsletter } from "../../services/newsletter";
+import toast from "react-hot-toast";
 const Newsletter = () => {
+    const [name,setName]=useState("");
 
+    const [email,setEmail]=useState("");
+
+    const handleSubmit = async (e:React.FormEvent)=>{
+        e.preventDefault();
+        try{
+            await subscribeNewsletter(
+            name,
+            email
+            );
+            toast.success("Subscribed Successfully");
+            setName("");
+            setEmail("");
+        }catch{
+            toast.error("Please try again");
+        }
+    }
     return (
 
         <section
@@ -23,7 +43,7 @@ const Newsletter = () => {
 
             </div>
 
-            <form className="mt-12 space-y-6">
+            <form className="mt-12 space-y-6" onSubmit={handleSubmit}>
 
                 <input
                     placeholder="Your name"
@@ -35,6 +55,8 @@ const Newsletter = () => {
                     bg-white/5
                     p-4
                     "
+                    value={name}
+                    onChange={(e)=>setName(e.target.value)}
                 />
 
                 <input
@@ -47,6 +69,8 @@ const Newsletter = () => {
                     bg-white/5
                     p-4
                     "
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
                 />
 
                 <button
