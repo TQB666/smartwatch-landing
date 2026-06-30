@@ -33,13 +33,13 @@ const Gallery = () => {
                     {images.filter((_, idx) => idx % 2 === 0).map((img, index) => (
                         <motion.div
                             key={`left-${index}`}
-                            className="overflow-hidden rounded-3xl bg-black/5 dark:bg-white/5 relative group"
+                            className="overflow-hidden rounded-3xl bg-white dark:bg-white/95 shadow-lg relative group"
                             whileHover={{ scale: 0.98 }}
                         >
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                             <img
                                 src={img}
-                                className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                                className="h-full w-full object-cover mix-blend-multiply transition duration-700 group-hover:scale-110"
                                 loading="lazy"
                             />
                         </motion.div>
@@ -51,13 +51,13 @@ const Gallery = () => {
                     {images.filter((_, idx) => idx % 2 !== 0).map((img, index) => (
                         <motion.div
                             key={`right-${index}`}
-                            className="overflow-hidden rounded-3xl bg-black/5 dark:bg-white/5 relative group"
+                            className="overflow-hidden rounded-3xl bg-white dark:bg-white/95 shadow-lg relative group"
                             whileHover={{ scale: 0.98 }}
                         >
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                             <img
                                 src={img}
-                                className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                                className="h-full w-full object-cover mix-blend-multiply transition duration-700 group-hover:scale-110"
                                 loading="lazy"
                             />
                         </motion.div>
