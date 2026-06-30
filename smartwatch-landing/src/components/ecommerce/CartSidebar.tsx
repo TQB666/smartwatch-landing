@@ -1,6 +1,8 @@
 import { useEcommerce } from "../../context/EcommerceContext";
 import { X, Plus, Minus, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { createOrder } from "../../services/order";
 
 interface Props {
     isOpen: boolean;
@@ -9,13 +11,23 @@ interface Props {
 
 const CartSidebar = ({ isOpen, onClose }: Props) => {
     const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useEcommerce();
+    const [isCheckingOut, setIsCheckingOut] = useState(false);
 
     if (!isOpen) return null;
 
-    const handleCheckout = () => {
-        clearCart();
-        toast.success("Checkout thành công!");
-        onClose();
+    const handleCheckout = async () => {
+        if (cart.length === 0) return;
+        setIsCheckingOut(true);
+        try {
+            await createOrder(cart, cartTotal);
+            clearCart();
+            toast.success("Checkout thành công!");
+            onClose();
+        } catch (error) {
+            toast.error("Checkout failed. Please try again.");
+        } finally {
+            setIsCheckingOut(false);
+        }
     };
 
     return (
@@ -65,8 +77,12 @@ const CartSidebar = ({ isOpen, onClose }: Props) => {
                             <span className="text-lg font-semibold">Total</span>
                             <span className="text-2xl font-bold">${cartTotal}</span>
                         </div>
-                        <button onClick={handleCheckout} className="w-full bg-cyan-500 text-black font-bold py-4 rounded-xl hover:bg-cyan-400 transition">
-                            Checkout
+                        <button 
+                            onClick={handleCheckout} 
+                            disabled={isCheckingOut}
+                            className="w-full bg-cyan-500 text-black font-bold py-4 rounded-xl hover:bg-cyan-400 transition disabled:opacity-50"
+                        >
+                            {isCheckingOut ? "Processing..." : "Checkout"}
                         </button>
                     </div>
                 )}
