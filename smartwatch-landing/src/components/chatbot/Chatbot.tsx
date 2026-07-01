@@ -52,7 +52,7 @@ const Chatbot = () => {
                             <Bot size={20} />
                             <h3 className="font-bold">Nova Assistant</h3>
                         </div>
-                        <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded-full transition">
+                        <button onClick={() => setIsOpen(false)} aria-label="Close chatbot" className="hover:bg-white/20 p-1 rounded-full transition">
                             <X size={20} />
                         </button>
                     </div>
@@ -95,6 +95,7 @@ const Chatbot = () => {
                         <button
                             onClick={handleSend}
                             disabled={!input.trim() || isLoading}
+                            aria-label="Send message"
                             className="p-2 rounded-full bg-cyan-500 text-black hover:bg-cyan-400 transition disabled:opacity-50"
                         >
                             <Send size={18} />
@@ -106,6 +107,7 @@ const Chatbot = () => {
             {!isOpen && (
                 <button
                     onClick={() => setIsOpen(true)}
+                    aria-label="Open chatbot"
                     className="p-4 rounded-full bg-cyan-500 text-black shadow-xl hover:scale-110 transition-transform animate-bounce"
                 >
                     <MessageCircle size={28} />

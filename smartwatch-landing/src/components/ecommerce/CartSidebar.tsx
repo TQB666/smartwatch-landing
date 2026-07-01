@@ -46,7 +46,7 @@ const CartSidebar = ({ isOpen, onClose }: Props) => {
             <div className="relative w-full max-w-md bg-white dark:bg-[#09090B] h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
                 <div className="flex items-center justify-between p-6 border-b border-black/10 dark:border-white/10">
                     <h2 className="text-2xl font-bold">Your Cart</h2>
-                    <button onClick={onClose} className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition">
+                    <button onClick={onClose} aria-label="Close cart" className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition">
                         <X size={24} />
                     </button>
                 </div>
@@ -63,15 +63,15 @@ const CartSidebar = ({ isOpen, onClose }: Props) => {
                                     <p className="text-cyan-600 dark:text-cyan-400 font-bold">${item.product.price}</p>
                                     <div className="flex items-center gap-3 mt-2">
                                         <div className="flex items-center gap-2 bg-black/5 dark:bg-white/5 rounded-lg px-2 py-1">
-                                            <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} disabled={item.quantity <= 1} className="disabled:opacity-50 hover:text-cyan-500">
+                                            <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} disabled={item.quantity <= 1} aria-label="Decrease quantity" className="disabled:opacity-50 hover:text-cyan-500">
                                                 <Minus size={14} />
                                             </button>
                                             <span className="text-sm font-semibold w-4 text-center">{item.quantity}</span>
-                                            <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} className="hover:text-cyan-500">
+                                            <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} aria-label="Increase quantity" className="hover:text-cyan-500">
                                                 <Plus size={14} />
                                             </button>
                                         </div>
-                                        <button onClick={() => removeFromCart(item.product.id)} className="text-red-500 hover:bg-red-500/10 p-1.5 rounded-lg transition ml-auto">
+                                        <button onClick={() => removeFromCart(item.product.id)} aria-label="Remove item" className="text-red-500 hover:bg-red-500/10 p-1.5 rounded-lg transition ml-auto">
                                             <Trash2 size={16} />
                                         </button>
                                     </div>

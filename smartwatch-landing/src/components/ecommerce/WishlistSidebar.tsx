@@ -21,7 +21,7 @@ const WishlistSidebar = ({ isOpen, onClose, products }: Props) => {
             <div className="relative w-full max-w-md bg-white dark:bg-[#09090B] h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
                 <div className="flex items-center justify-between p-6 border-b border-black/10 dark:border-white/10">
                     <h2 className="text-2xl font-bold">Wishlist</h2>
-                    <button onClick={onClose} className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition">
+                    <button onClick={onClose} aria-label="Close wishlist" className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition">
                         <X size={24} />
                     </button>
                 </div>
@@ -43,7 +43,7 @@ const WishlistSidebar = ({ isOpen, onClose, products }: Props) => {
                                         >
                                             <ShoppingCart size={16} /> Add
                                         </button>
-                                        <button onClick={() => toggleWishlist(product.id)} className="text-red-500 hover:bg-red-500/10 p-2 rounded-lg transition">
+                                        <button onClick={() => toggleWishlist(product.id)} aria-label="Remove from wishlist" className="text-red-500 hover:bg-red-500/10 p-2 rounded-lg transition">
                                             <Trash2 size={18} />
                                         </button>
                                     </div>
