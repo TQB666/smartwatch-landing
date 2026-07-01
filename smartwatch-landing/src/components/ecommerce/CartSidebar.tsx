@@ -57,7 +57,7 @@ const CartSidebar = ({ isOpen, onClose }: Props) => {
                     ) : (
                         cart.map((item) => (
                             <div key={item.product.id} className="flex gap-4 items-center">
-                                <img src={item.product.image} alt={item.product.name} className="w-20 h-20 object-contain bg-black/5 dark:bg-white/5 rounded-xl p-2 mix-blend-multiply dark:mix-blend-normal" />
+                                <img src={item.product.image} alt={item.product.name} width="80" height="80" loading="lazy" className="w-20 h-20 object-contain bg-black/5 dark:bg-white/5 rounded-xl p-2 mix-blend-multiply dark:mix-blend-normal" />
                                 <div className="flex-1">
                                     <h3 className="font-semibold">{item.product.name}</h3>
                                     <p className="text-cyan-600 dark:text-cyan-400 font-bold">${item.product.price}</p>

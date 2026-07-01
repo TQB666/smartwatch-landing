@@ -1,10 +1,11 @@
 import { Menu, Moon, Sun, ShoppingCart, Heart, Clock } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { useEcommerce } from "../../context/EcommerceContext";
-import CartSidebar from "../ecommerce/CartSidebar";
-import WishlistSidebar from "../ecommerce/WishlistSidebar";
-import HistorySidebar from "../ecommerce/HistorySidebar";
 import { PRODUCTS } from "../../config/products";
+
+const CartSidebar = lazy(() => import("../ecommerce/CartSidebar"));
+const WishlistSidebar = lazy(() => import("../ecommerce/WishlistSidebar"));
+const HistorySidebar = lazy(() => import("../ecommerce/HistorySidebar"));
 
 const Navbar = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -96,9 +97,11 @@ const Navbar = () => {
         </div>
       </header>
 
-      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <WishlistSidebar isOpen={isWishlistOpen} onClose={() => setIsWishlistOpen(false)} products={PRODUCTS} />
-      <HistorySidebar isOpen={isHistoryOpen} onClose={() => setIsHistoryOpen(false)} />
+      <Suspense fallback={null}>
+        <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        <WishlistSidebar isOpen={isWishlistOpen} onClose={() => setIsWishlistOpen(false)} products={PRODUCTS} />
+        <HistorySidebar isOpen={isHistoryOpen} onClose={() => setIsHistoryOpen(false)} />
+      </Suspense>
     </>
   );
 };

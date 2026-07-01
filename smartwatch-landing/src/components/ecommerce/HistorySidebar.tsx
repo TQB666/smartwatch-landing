@@ -36,7 +36,7 @@ const HistorySidebar = ({ isOpen, onClose }: Props) => {
                                 key={`${product.id}-${idx}`} 
                                 className="flex gap-4 items-center p-3 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition border border-transparent hover:border-black/10 dark:hover:border-white/10 group"
                             >
-                                <img src={product.image} alt={product.name} className="w-16 h-16 object-contain bg-black/5 dark:bg-white/5 rounded-lg p-1" />
+                                <img src={product.image} alt={product.name} width="64" height="64" loading="lazy" className="w-16 h-16 object-contain bg-black/5 dark:bg-white/5 rounded-lg p-1" />
                                 <div className="flex-1">
                                     <h3 className="font-semibold">{product.name}</h3>
                                     <p className="text-sm text-gray-500">${product.price}</p>

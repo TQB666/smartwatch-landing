@@ -1,11 +1,15 @@
+import { Suspense, lazy } from "react";
 import Home from "./pages/Home";
-import Chatbot from "./components/chatbot/Chatbot";
+
+const Chatbot = lazy(() => import("./components/chatbot/Chatbot"));
 
 function App() {
   return (
     <>
       <Home />
-      <Chatbot />
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
     </>
   );
 }
