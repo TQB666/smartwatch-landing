@@ -12,15 +12,25 @@ interface Props {
 const CartSidebar = ({ isOpen, onClose }: Props) => {
     const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useEcommerce();
     const [isCheckingOut, setIsCheckingOut] = useState(false);
+    const [customerName, setCustomerName] = useState("");
+    const [customerPhone, setCustomerPhone] = useState("");
 
     if (!isOpen) return null;
 
     const handleCheckout = async () => {
         if (cart.length === 0) return;
+        
+        if (!customerName.trim() || !customerPhone.trim()) {
+            toast.error("Vui lòng nhập đầy đủ Tên và Số điện thoại!");
+            return;
+        }
+
         setIsCheckingOut(true);
         try {
-            await createOrder(cart, cartTotal);
+            await createOrder(cart, cartTotal, customerName, customerPhone);
             clearCart();
+            setCustomerName("");
+            setCustomerPhone("");
             toast.success("Checkout thành công!");
             onClose();
         } catch (error) {
@@ -47,7 +57,7 @@ const CartSidebar = ({ isOpen, onClose }: Props) => {
                     ) : (
                         cart.map((item) => (
                             <div key={item.product.id} className="flex gap-4 items-center">
-                                <img src={item.product.image} alt={item.product.name} className="w-20 h-20 object-contain bg-black/5 dark:bg-white/5 rounded-xl p-2" />
+                                <img src={item.product.image} alt={item.product.name} className="w-20 h-20 object-contain bg-black/5 dark:bg-white/5 rounded-xl p-2 mix-blend-multiply dark:mix-blend-normal" />
                                 <div className="flex-1">
                                     <h3 className="font-semibold">{item.product.name}</h3>
                                     <p className="text-cyan-600 dark:text-cyan-400 font-bold">${item.product.price}</p>
@@ -72,8 +82,24 @@ const CartSidebar = ({ isOpen, onClose }: Props) => {
                 </div>
 
                 {cart.length > 0 && (
-                    <div className="p-6 border-t border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5">
-                        <div className="flex justify-between items-center mb-4">
+                    <div className="p-6 border-t border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 space-y-4">
+                        <div className="space-y-3">
+                            <input 
+                                type="text"
+                                placeholder="Họ và Tên"
+                                value={customerName}
+                                onChange={(e) => setCustomerName(e.target.value)}
+                                className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-black/20 p-3 text-gray-900 dark:text-white outline-none focus:border-cyan-500"
+                            />
+                            <input 
+                                type="tel"
+                                placeholder="Số điện thoại"
+                                value={customerPhone}
+                                onChange={(e) => setCustomerPhone(e.target.value)}
+                                className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-black/20 p-3 text-gray-900 dark:text-white outline-none focus:border-cyan-500"
+                            />
+                        </div>
+                        <div className="flex justify-between items-center py-2">
                             <span className="text-lg font-semibold">Total</span>
                             <span className="text-2xl font-bold">${cartTotal}</span>
                         </div>
