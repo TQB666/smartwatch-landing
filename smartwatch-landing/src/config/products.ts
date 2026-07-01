@@ -1,5 +1,7 @@
 import type { Product } from "../types/ecommerce";
-import { S3_IMAGES } from "./s3";
+import imgSport from "../assets/images/gray.webp";
+import imgPro from "../assets/images/watch-black.webp";
+import imgElite from "../assets/images/watch.webp";
 
 export const PRODUCTS: Product[] = [
     {
@@ -7,7 +9,7 @@ export const PRODUCTS: Product[] = [
         name: "NovaWatch Sport",
         price: 199,
         description: "Lightweight and durable, perfect for active lifestyles.",
-        image: S3_IMAGES.hero,
+        image: imgSport,
         badge: "Most Popular"
     },
     {
@@ -15,14 +17,14 @@ export const PRODUCTS: Product[] = [
         name: "NovaWatch Pro",
         price: 299,
         description: "Premium materials with advanced health tracking.",
-        image: S3_IMAGES.hero, // Using same image for demo
+        image: imgPro,
     },
     {
         id: "nova-elite",
         name: "NovaWatch Elite",
         price: 399,
         description: "Titanium body, sapphire glass, ultimate luxury.",
-        image: S3_IMAGES.hero, // Using same image for demo
+        image: imgElite,
         badge: "Premium"
     }
 ];

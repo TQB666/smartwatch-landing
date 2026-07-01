@@ -2,9 +2,16 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../config/firebase";
 import type { CartItem } from "../types/ecommerce";
 
-export const createOrder = async (cartItems: CartItem[], totalAmount: number) => {
+export const createOrder = async (
+    cartItems: CartItem[], 
+    totalAmount: number,
+    customerName: string,
+    customerPhone: string
+) => {
     try {
         const orderData = {
+            customerName,
+            customerPhone,
             items: cartItems.map(item => ({
                 productId: item.product.id,
                 name: item.product.name,
