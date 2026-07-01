@@ -32,7 +32,7 @@ const WishlistSidebar = ({ isOpen, onClose, products }: Props) => {
                     ) : (
                         wishlistItems.map((product) => (
                             <div key={product.id} className="flex gap-4 items-center">
-                                <img src={product.image} alt={product.name} className="w-20 h-20 object-contain bg-black/5 dark:bg-white/5 rounded-xl p-2" />
+                                <img src={product.image} alt={product.name} width="80" height="80" loading="lazy" className="w-20 h-20 object-contain bg-black/5 dark:bg-white/5 rounded-xl p-2" />
                                 <div className="flex-1">
                                     <h3 className="font-semibold">{product.name}</h3>
                                     <p className="text-cyan-600 dark:text-cyan-400 font-bold">${product.price}</p>

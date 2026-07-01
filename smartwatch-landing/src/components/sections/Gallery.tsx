@@ -39,6 +39,8 @@ const Gallery = () => {
                             <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                             <img
                                 src={img}
+                                width="800"
+                                height="800"
                                 className="h-full w-full object-cover mix-blend-multiply transition duration-700 group-hover:scale-110"
                                 loading="lazy"
                             />
@@ -57,6 +59,8 @@ const Gallery = () => {
                             <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                             <img
                                 src={img}
+                                width="800"
+                                height="800"
                                 className="h-full w-full object-cover mix-blend-multiply transition duration-700 group-hover:scale-110"
                                 loading="lazy"
                             />

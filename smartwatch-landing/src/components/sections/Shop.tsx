@@ -49,6 +49,8 @@ const Shop = () => {
                                         src={product.image} 
                                         alt={product.name} 
                                         loading="lazy"
+                                        width="400"
+                                        height="400"
                                         className="h-48 object-contain mix-blend-multiply hover:scale-110 transition-transform duration-300" 
                                     />
                                 </div>
