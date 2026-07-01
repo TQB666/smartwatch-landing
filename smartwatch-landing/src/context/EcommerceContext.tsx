@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
 import type { Product, CartItem } from "../types/ecommerce";
 import toast from "react-hot-toast";
 

@@ -8,7 +8,7 @@ import { PRODUCTS } from "../../config/products";
 
 const Navbar = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-  const { cart, wishlist, history } = useEcommerce();
+  const { cart, wishlist } = useEcommerce();
   
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
