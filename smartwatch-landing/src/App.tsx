@@ -1,7 +1,11 @@
+import Home from "./pages/Home";
+import Chatbot from "./components/chatbot/Chatbot";
+
 function App() {
   return (
     <>
-      <h1>Hello NovaWatch</h1>
+      <Home />
+      <Chatbot />
     </>
   );
 }
