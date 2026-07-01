@@ -20,7 +20,7 @@ const HistorySidebar = ({ isOpen, onClose }: Props) => {
                         <Clock className="text-cyan-500" />
                         <h2 className="text-2xl font-bold">Recently Viewed</h2>
                     </div>
-                    <button onClick={onClose} className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition">
+                    <button onClick={onClose} aria-label="Close history" className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition">
                         <X size={24} />
                     </button>
                 </div>

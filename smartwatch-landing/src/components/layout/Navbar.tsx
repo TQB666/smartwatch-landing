@@ -52,10 +52,10 @@ const Navbar = () => {
             </a>
             
             <div className="flex items-center gap-4 ml-4 border-l border-black/10 dark:border-white/10 pl-4">
-                <button onClick={() => setIsHistoryOpen(true)} className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
+                <button onClick={() => setIsHistoryOpen(true)} aria-label="View history" className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
                   <Clock size={20} />
                 </button>
-                <button onClick={() => setIsWishlistOpen(true)} className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
+                <button onClick={() => setIsWishlistOpen(true)} aria-label="View wishlist" className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
                   <Heart size={20} />
                   {wishlist.length > 0 && (
                       <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -63,7 +63,7 @@ const Navbar = () => {
                       </span>
                   )}
                 </button>
-                <button onClick={() => setIsCartOpen(true)} className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
+                <button onClick={() => setIsCartOpen(true)} aria-label="View cart" className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
                   <ShoppingCart size={20} />
                   {totalCartItems > 0 && (
                       <span className="absolute top-0 right-0 bg-cyan-500 text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -71,14 +71,14 @@ const Navbar = () => {
                       </span>
                   )}
                 </button>
-                <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
+                <button onClick={toggleTheme} aria-label="Toggle theme" className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
                   {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
             </div>
           </nav>
 
           <div className="flex items-center gap-2 md:hidden">
-              <button onClick={() => setIsCartOpen(true)} className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
+              <button onClick={() => setIsCartOpen(true)} aria-label="View cart" className="relative p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
                   <ShoppingCart size={20} />
                   {totalCartItems > 0 && (
                       <span className="absolute top-0 right-0 bg-cyan-500 text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -86,10 +86,10 @@ const Navbar = () => {
                       </span>
                   )}
               </button>
-              <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
+              <button onClick={toggleTheme} aria-label="Toggle theme" className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition">
                   {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              <button>
+              <button aria-label="Open menu">
                 <Menu />
               </button>
           </div>

@@ -34,6 +34,7 @@ const Shop = () => {
                                     e.stopPropagation();
                                     toggleWishlist(product.id);
                                 }}
+                                aria-label="Toggle wishlist"
                                 className="absolute top-4 right-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition z-10"
                             >
                                 <Heart 
@@ -47,6 +48,7 @@ const Shop = () => {
                                     <img 
                                         src={product.image} 
                                         alt={product.name} 
+                                        loading="lazy"
                                         className="h-48 object-contain mix-blend-multiply hover:scale-110 transition-transform duration-300" 
                                     />
                                 </div>
